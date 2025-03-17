@@ -2,7 +2,7 @@
 
 const amigos = [];
 const amigoIngresado = document.getElementById("amigo");
-
+const lista = document.getElementById("listaAmigos");
 
 function agregarAmigo(){
     const Amigo = amigoIngresado.value.trim(); //Captura el nombre al hacer click.
@@ -19,5 +19,16 @@ function agregarAmigo(){
     }
     
     amigoIngresado.value = "";  // Limpia la casilla
+    actualizarLista();
 
+}
+
+function actualizarLista() {
+    lista.innerHTML = "";  // Limpia antes de agregar nuevos elementos
+    
+    amigos.forEach(amigo => {
+        const li = document.createElement("li");
+        li.textContent = amigo;   
+        lista.appendChild(li);  // Serializa los nombres de la lista de amigos
+    });
 }
