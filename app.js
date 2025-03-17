@@ -3,6 +3,7 @@
 const amigos = [];
 const amigoIngresado = document.getElementById("amigo");
 const lista = document.getElementById("listaAmigos");
+const sorteado = document.getElementById("resultado");
 
 function agregarAmigo(){
     const Amigo = amigoIngresado.value.trim(); //Captura el nombre al hacer click.
@@ -31,4 +32,16 @@ function actualizarLista() {
         li.textContent = amigo;   
         lista.appendChild(li);  // Serializa los nombres de la lista de amigos
     });
+}
+
+function sortearAmigo() {
+    if (amigos.length === 0) {
+        alert("Por favor, primero agregue sus amigos.");
+        return;
+    }
+    
+    const numAleatorio = Math.floor(Math.random() * amigos.length);  // Genera un numero aleatorio
+    const amigoAleatorio = amigos[numAleatorio];  // Obtiene un nombre al azar
+    
+    sorteado.innerHTML = `Tu Amigo Secreto es: ${amigoAleatorio}!`;  // Muestra al Amigo Secreto
 }
